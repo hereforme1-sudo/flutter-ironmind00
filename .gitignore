@@ -1,0 +1,17 @@
+# Flutter
+.dart_tool/
+.packages
+.pub-cache/
+build/
+
+# Platform folders generated on CI/local
+android/
+ios/
+macos/
+linux/
+windows/
+
+# IDE
+.idea/
+.vscode/
+*.iml
