@@ -1,0 +1,23 @@
+pluginManagement {
+    includeBuild("${System.env.FLUTTER_ROOT}/packages/flutter_tools/gradle")
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id "dev.flutter.flutter-plugin-loader"
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "ironmind_app"
+include ":app"

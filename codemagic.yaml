@@ -1,0 +1,36 @@
+workflows:
+  android_release:
+    name: Android Release (regen platforms)
+    environment:
+      flutter: stable
+    scripts:
+      - name: Flutter SDK version
+        script: flutter --version
+      - name: Regenerate platform folders (Gradle-compatible)
+        script: |
+          rm -rf android ios macos linux windows
+          flutter create .
+      - name: Fetch dependencies
+        script: flutter pub get
+      - name: Analyze (optional)
+        script: flutter analyze || true
+      - name: Build APK
+        script: flutter build apk --release
+    artifacts:
+      - build/app/outputs/**/*.apk
+
+  android_debug:
+    name: Android Debug (regen platforms)
+    environment:
+      flutter: stable
+    scripts:
+      - name: Regenerate platform folders (Gradle-compatible)
+        script: |
+          rm -rf android ios macos linux windows
+          flutter create .
+      - name: Fetch dependencies
+        script: flutter pub get
+      - name: Build debug APK
+        script: flutter build apk --debug
+    artifacts:
+      - build/app/outputs/**/*.apk
